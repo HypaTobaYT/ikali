@@ -28,8 +28,8 @@ with open("README.md", "r", encoding="utf-8") as fh:
 
 setup(
     name="ikali",
-    version="1.0.0",
-    author="Your Name",
+    version="1.0.1",
+    author="Hypa",
     author_email="hypertobayt@gmail.com",
     description="iKali, a very annoying program that makes you want to die.",
     long_description=long_description,
