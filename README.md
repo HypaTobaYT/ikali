@@ -1,4 +1,3 @@
-cat > README.md << 'EOF'
 # iKALI
 
 This was created out of boredom.
@@ -20,4 +19,3 @@ pip uninstall ikali
 ```bash
 ikali
 ```
-EOF
