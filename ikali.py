@@ -173,7 +173,7 @@ def main():
     except KeyboardInterrupt:
         show_cursor()
         r, g, b = get_rainbow_rgb(60)  # Yellow
-        print(f"\n\n{rgb_to_ansi(r, g, b)}Interrupted! See you later! 👋{{r{eset_color()}")
+        print(f"\n\n{rgb_to_ansi(r, g, b)}Interrupted! See you later! 👋{reset_color()}")
         sys.exit(0)
 
 if __name__ == "__main__":
