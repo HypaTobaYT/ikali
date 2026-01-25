@@ -7,7 +7,8 @@ Please note that this crap is wholly untested, I am new to programming, and espe
 Update 1.0.5 - fixed broken keyboard interrupt code causing traceback error.
 Update 1.0.6 - Downloading isn't working with previous fix.
 Update 1.0.7 - Switched from pip to pipx, citing safety concerns. 
-Update 1.0.8: Testing if releasing on github works with pypi
+Update 1.0.8 - Testing if releasing on github works with pypi
+Update v1.0.9 - figuring out naming conventions- added a "v"
 
 ## Installation
 ```bash
