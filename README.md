@@ -6,6 +6,8 @@ Please note that this crap is wholly untested, I am new to programming, and espe
 
 Update 1.0.5 - fixed broken keyboard interrupt code causing traceback error.
 Update 1.0.6 - Downloading isn't working with previous fix.
+
+
 Update 1.0.7 - Switched from pip to pipx, citing safety concerns. 
 
 ## Installation
@@ -28,4 +30,5 @@ pipx uninstall ikali
 
 ## Usage
 ```bash
+
 ikali
