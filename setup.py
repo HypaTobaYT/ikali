@@ -28,7 +28,7 @@ with open("README.md", "r", encoding="utf-8") as fh:
 
 setup(
     name="ikali",
-    version="v1.0.9",
+    version="v1.0.10",
     author="Hypa",
     author_email="hypertobayt@gmail.com",
     description="iKali, runs a command when typing ikali into the terminal.",
@@ -52,3 +52,4 @@ setup(
         'install': PostInstallCommand,
     },
 )
+
