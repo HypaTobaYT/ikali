@@ -1,27 +1,31 @@
-# iKALI 1.0.6
+# iKALI 1.0.7
 
-This was created out of boredom.
-
-Please note that this is wholly untested, I am new to programming, and especially using linux. 
-installing with sudo makes it work though.
+iKali is a terrible program fuelled by hate and death. this program barely works correctly, 
+and cannot run on windows for reasons i seriously do not know or understand. 
+Please note that this crap is wholly untested, I am new to programming, and especially using linux. 
 
 Update 1.0.5 - fixed broken keyboard interrupt code causing traceback error.
-update 1.0.6 - Downloading isn't working with previous fix.
+Update 1.0.6 - Downloading isn't working with previous fix.
+Update 1.0.7 - Switched from pip to pipx, citing safety concerns. 
 
-## Installation (May require pip3)
+## Installation
 ```bash
-sudo pip install ikali
+sudo apt install pipx 
+pipx install ikali
+pipx ensurepath
 ```
+**After running `pipx ensurepath`, open a new terminal, then run `ikali`**
+
 ## Update
 ```bash
-sudo pip install -U ikali
+pipx upgrade ikali
 ```
+
 ## Uninstall
 ```bash
-sudo pip uninstall ikali
+pipx uninstall ikali
 ```
 
 ## Usage
 ```bash
 ikali
-```
