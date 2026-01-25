@@ -2,17 +2,20 @@
 
 This was created out of boredom.
 
+Please note that this is wholly untested, I am new to programming, and especially using linux. 
+installing with sudo makes it work, but 
+
 ## Installation (May require pip3)
 ```bash
-pip install ikali
+sudo pip install ikali
 ```
 ## Update
 ```bash
-pip install -U ikali
+sudo pip install -U ikali
 ```
 ## Uninstall
 ```bash
-pip uninstall ikali
+sudo pip uninstall ikali
 ```
 
 ## Usage
