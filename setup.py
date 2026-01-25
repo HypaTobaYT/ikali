@@ -31,7 +31,7 @@ setup(
     version="1.0.0",
     author="Your Name",
     author_email="hypertobayt@gmail.com",
-    description="Utter literal shit",
+    description="iKali, a very annoying program that makes you want to die.",
     long_description=long_description,
     long_description_content_type="text/markdown",
     url="https://github.com/HypaTobaYT/ikali",

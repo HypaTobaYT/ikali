@@ -1,7 +1,7 @@
 cat > README.md << 'EOF'
 # iKALI
 
-iCarly-themed terminal experience - Because even hackers need theme songs 🌈
+because its kinda funny when you mistype stuff
 
 ## Installation
 ```bash
