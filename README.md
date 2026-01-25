@@ -1,4 +1,4 @@
-# iKALI 1.0.8
+# iKALI 1.0.9
 
 iKali is a terrible program fuelled by hate and death. this program barely works correctly, 
 and cannot run on windows for reasons i seriously do not know or understand. 
@@ -30,4 +30,5 @@ pipx uninstall ikali
 
 ## Usage
 ```bash
+
 ikali
