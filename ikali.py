@@ -148,8 +148,8 @@ def footer():
     print("\n")
     messages = [
         "iKALI: Because even hackers need theme songs 🎵",
-        "Not affiliated with Kali Linux or Nickelodeon",
-        "Powered by nostalgia, Python, and lots and lots of vodka",
+        "Not affiliated with Kali Linux or Nickelodeon.",
+        "Powered by nostalgia and plenty of Vodka.",
     ]
     
     for msg in messages:

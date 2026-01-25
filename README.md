@@ -1,11 +1,15 @@
 cat > README.md << 'EOF'
 # iKALI
 
-because its kinda funny when you mistype stuff
+This was created out of boredom.
 
 ## Installation
 ```bash
 pip install ikali
+```
+
+```bash
+pip install -U ikali
 ```
 
 ## Usage
