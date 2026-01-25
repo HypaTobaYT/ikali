@@ -7,7 +7,7 @@ This was created out of boredom.
 ```bash
 pip install ikali
 ```
-
+## Update
 ```bash
 pip install -U ikali
 ```
