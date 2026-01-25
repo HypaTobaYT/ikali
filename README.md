@@ -5,6 +5,8 @@ and cannot run on windows for reasons i seriously do not know or understand.
 Please note that this crap is wholly untested, I am new to programming, and especially using linux. 
 
 Update 1.0.5 - fixed broken keyboard interrupt code causing traceback error.
+
+
 Update 1.0.6 - Downloading isn't working with previous fix.
 
 
@@ -32,3 +34,4 @@ pipx uninstall ikali
 ```bash
 
 ikali
+
