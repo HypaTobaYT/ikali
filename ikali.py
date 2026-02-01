@@ -8,6 +8,39 @@ import sys
 import os
 import math
 
+# ===== CONFIGURATION OPTIONS =====
+# Adjust these values to customize the animation speeds and behavior
+
+# Typewriter effect speed (seconds per character)
+TYPEWRITER_SPEED = 0.03
+
+# Rainbow animation cycles (how many color shifts after typewriter)
+RAINBOW_CYCLES = 36
+
+# Rainbow animation speed (seconds per cycle)
+RAINBOW_SPEED = 0.04
+
+# Logo rainbow animation cycles
+LOGO_RAINBOW_CYCLES = 36
+
+# Logo rainbow animation speed
+LOGO_RAINBOW_SPEED = 0.04
+
+# Pause after each lyric line (seconds)
+LYRIC_PAUSE = 0.05
+
+# Pause between stanzas (seconds)
+STANZA_PAUSE = 0.1
+
+# Pause before showing footer (seconds)
+FOOTER_DELAY = 1.0
+
+# Pause after footer before exit (seconds)
+EXIT_DELAY = 3.0
+
+# ===== END CONFIGURATION =====
+
+
 def rgb_to_ansi(r, g, b):
     """Convert RGB to ANSI true color code"""
     return f"\033[38;2;{r};{g};{b}m"
@@ -48,6 +81,7 @@ def rainbow_text(text, offset=0):
     for char in text:
         if char != ' ' and char != '\n':
             # Calculate hue position (0-360 degrees)
+            # Adjusted so offset=0 starts with red (hue=0)
             hue = (offset * 10 + char_count * 8) % 360
             r, g, b = get_rainbow_rgb(hue)
             result += rgb_to_ansi(r, g, b) + char
@@ -83,65 +117,73 @@ def print_logo_animated():
     
     lines = logo.strip().split('\n')
     
-    # Print initial logo
+    # Print initial logo (no typewriter, just appear)
     for line in lines:
         print(rainbow_text(line, offset=0))
     
-    # Animate the logo with smooth gradient flow
-    for cycle in range(1, 36):  # Full color wheel cycle
-        sys.stdout.write(f'\033[{len(lines)}A')  # Move cursor up
+    # Animate the logo with smooth gradient flow - end at offset 0 (back to red)
+    for cycle in range(1, LOGO_RAINBOW_CYCLES + 1):
+        sys.stdout.write(f'\033[{len(lines)}A')
         for line in lines:
-            sys.stdout.write('\033[K')  # Clear line
-            print(rainbow_text(line, offset=cycle))
+            sys.stdout.write('\r')
+            sys.stdout.write('\033[K')
+            print(rainbow_text(line, offset=cycle % 36))  # Modulo 36 to cycle back to start
         sys.stdout.flush()
-        time.sleep(0.05)  # Smooth animation speed
+        time.sleep(LOGO_RAINBOW_SPEED)
 
-def print_line_animated(text, cycles=36, delay=0.05):
-    """Print a single line with animated gradient rainbow effect"""
-    # Print initial version
-    print(rainbow_text(text, offset=0))
+def print_line_animated(text):
+    """Print a single line with typewriter effect then animated gradient rainbow effect"""
+    # Typewriter effect - starts at offset 0 (red)
+    for i in range(len(text) + 1):
+        sys.stdout.write('\r')
+        sys.stdout.write('\033[K')
+        sys.stdout.write(rainbow_text(text[:i], offset=0))
+        sys.stdout.flush()
+        time.sleep(TYPEWRITER_SPEED)
     
-    # Animate it through color spectrum
-    for cycle in range(1, cycles):
-        sys.stdout.write('\033[1A')  # Move up one line
-        sys.stdout.write('\033[K')  # Clear the line
+    print()
+    
+    # Animate it through color spectrum - one full rainbow cycle
+    for cycle in range(0, RAINBOW_CYCLES):
+        sys.stdout.write('\033[1A')
+        sys.stdout.write('\r')
+        sys.stdout.write('\033[K')
         print(rainbow_text(text, offset=cycle))
         sys.stdout.flush()
-        time.sleep(delay)
+        time.sleep(RAINBOW_SPEED)
 
 def sing_theme():
     """Display the iCarly theme song lyrics with animation"""
     lyrics = [
-        "I know, you see",
-        "Somehow the world will change for me",
-        "And be so wonderful",
+        "I know, you see,",
+        "Somehow the world will change for me,",
+        "And be so wonderful.",
         "",
-        "Live life, breathe air",
-        "I know somehow we're gonna get there",
-        "And feel so wonderful",
+        "Live life, breathe air,",
+        "I know somehow we're gonna get there,",
+        "And feel so wonderful.",
         "",
-        "It's all for real",
-        "I'm telling you just how I feel",
+        "It's all for real-",
+        "I'm telling you just how I feel;",
         "So wake up the members of my nation",
-        "It's your time to be",
-        "There's no chance unless you take one",
-        "And the time to see",
-        "The brighter side of every situation",
+        "It's your time to be-",
+        "There's no chance unless you take one.",
+        "And the time to see the brighter side of every situation.",
         "Some things are meant to be",
-        "So give me your best and leave the rest to me",
+        "So give me your best and leave the rest to me.",
         "",
-        "Leave it all to me",
-        "leave it all to me",
-        "Just leave it all to me",
+        "Leave it all to me.",
+        "Leave it all to me.",
+        "Just leave it all to me.",
     ]
     
     for line in lyrics:
         if line:
-            print_line_animated(line, cycles=36, delay=0.05)
-            time.sleep(0.4)
+            print_line_animated(line)
+            time.sleep(LYRIC_PAUSE)
         else:
             print()
-            time.sleep(0.3)
+            time.sleep(STANZA_PAUSE)
 
 def footer():
     """Print footer message"""
@@ -153,8 +195,8 @@ def footer():
     ]
     
     for msg in messages:
-        print_line_animated(msg, cycles=36, delay=0.05)
-        time.sleep(0.3)
+        print_line_animated(msg)
+        time.sleep(LYRIC_PAUSE)
     print()
 
 def main():
@@ -166,13 +208,13 @@ def main():
         print("\n")
         time.sleep(0.8)
         sing_theme()
-        time.sleep(1)
+        time.sleep(FOOTER_DELAY)
         footer()
-        time.sleep(3)
+        time.sleep(EXIT_DELAY)
         show_cursor()
     except KeyboardInterrupt:
         show_cursor()
-        r, g, b = get_rainbow_rgb(60)  # Yellow
+        r, g, b = get_rainbow_rgb(60)
         print(f"\n\n{rgb_to_ansi(r, g, b)}Interrupted! See you later! 👋{reset_color()}")
         sys.exit(0)
 
